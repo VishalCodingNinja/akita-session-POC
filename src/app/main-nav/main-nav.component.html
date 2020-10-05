@@ -1,0 +1,42 @@
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item" routerLink="/" style="font-size: 30px;">
+      Akita
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+
+
+    <a class="navbar-item" routerLink="dashboard" *showIfLoggedIn="true">
+      Dashboard
+    </a>
+
+  </div>
+
+  <div class="navbar-end">
+    <div class="navbar-item">
+      <div class="field is-grouped" style="align-items: center;">
+        <p class="control" *showIfLoggedIn="false">
+          <a class="button" routerLink="login">
+            Login
+          </a>
+        </p>
+        <ng-container *showIfLoggedIn="true">
+          <p class="control">
+            <a class="button is-primary" (click)="logout()">
+              Logout
+            </a>
+          </p>
+          <p class="control">
+            {{ name$ | async}}
+          </p>
+        </ng-container>
+
+      </div>
+    </div>
+  </div>
+</nav>
